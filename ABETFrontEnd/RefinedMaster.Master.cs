@@ -13,5 +13,10 @@ namespace ABETFrontEnd
 		{
 
 		}
+
+		protected void logoutButton_Click(object sender, EventArgs e)
+		{
+			Server.Transfer("~/LoginPage.aspx");
+		}
 	}
 }

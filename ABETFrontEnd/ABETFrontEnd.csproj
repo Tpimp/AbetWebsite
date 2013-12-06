@@ -39,7 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Office.Tools.Word, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
@@ -63,6 +63,7 @@
     <Content Include="CSETText.png" />
     <Content Include="DatabaseGridviewPage.aspx" />
     <Content Include="EditContentPage.aspx" />
+    <Content Include="LoginPage.aspx" />
     <Content Include="MockSyllabusPage.aspx" />
     <Content Include="Purvine.jpg" />
     <Content Include="SearchClassSyllabusPage.aspx" />
@@ -74,6 +75,7 @@
     <Content Include="WordDocImportPage.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseDegree.cs" />
     <Compile Include="DatabaseGridviewPage.aspx.cs">
       <DependentUpon>DatabaseGridviewPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -87,6 +89,13 @@
     </Compile>
     <Compile Include="EditContentPage.aspx.designer.cs">
       <DependentUpon>EditContentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MockSyllabusPage.aspx.cs">
       <DependentUpon>MockSyllabusPage.aspx</DependentUpon>
@@ -103,6 +112,7 @@
     <Compile Include="RefinedMaster.Master.designer.cs">
       <DependentUpon>RefinedMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="Requisite.cs" />
     <Compile Include="SearchClassSyllabusPage.aspx.cs">
       <DependentUpon>SearchClassSyllabusPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -110,6 +120,8 @@
     <Compile Include="SearchClassSyllabusPage.aspx.designer.cs">
       <DependentUpon>SearchClassSyllabusPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SyllabusParser.cs" />
+    <Compile Include="Textbook.cs" />
     <Compile Include="VaporHome.aspx.cs">
       <DependentUpon>VaporHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

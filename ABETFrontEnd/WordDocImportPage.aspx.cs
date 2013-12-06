@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Microsoft.Office.Tools.Word;
+using Microsoft.Office.Interop.Word;
 using System.Configuration;
 
 namespace ABETFrontEnd
@@ -18,23 +18,53 @@ namespace ABETFrontEnd
 		protected void ImportButton_Click(object sender, EventArgs e)
 		{
             DataImportReview.Visible = true;
-			/*string ImportFilePath = ConfigurationManager.AppSettings["FilePath"].ToString();
-			bool success = false;
-			string emptyCheck = string.Empty;
 
-			//hoping to implement this..
-			if (DocumentUpload.HasFile)
+			try
 			{
-                
-				try
-				{
+				dumpText();
+			}
+			catch (Exception ex)
+			{
+			}
+		}
 
-				}
-				catch (Exception ex)
-				{
+		private void dumpText()
+		{
+			DocumentUpload.SaveAs(Server.MapPath(DocumentUpload.FileName));
+			object documentContainer = Server.MapPath(DocumentUpload.FileName);
 
-				}
-			}*/
+			Microsoft.Office.Interop.Word.Application wordDocInstance = new Microsoft.Office.Interop.Word.Application();
+			Microsoft.Office.Interop.Word.Document wordDocFile = new Microsoft.Office.Interop.Word.Document();
+
+			object readOnly = false;
+			object isVisible = true;
+			object missing = System.Reflection.Missing.Value;
+
+			try
+			{
+				wordDocFile = wordDocInstance.Documents.Open(ref documentContainer, ref missing, ref readOnly, ref missing,
+								ref missing, ref missing, ref missing, ref missing, ref missing, ref isVisible);
+				docOutput.MaxLength = wordDocFile.Content.Text.Length;
+
+				//string fullDocText = wordDocFile.Content.Text;
+				Range fullDocText = wordDocFile.Content.FormattedText;
+
+				//wordDocFile.Paragraphs[0].;
+
+				//fullDocText.
+
+				docOutput.Text = fullDocText.Text;
+
+
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("ERROR: " + ex.Message);
+			}
+			finally
+			{
+				wordDocFile.Close(ref missing, ref missing, ref missing);
+			}
 		}
 
         protected void TextBox2_TextChanged(object sender, EventArgs e)

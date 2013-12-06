@@ -11,11 +11,14 @@
         </div>
         <div>
             <asp:Label ID="ImportLabel" runat="server" Text="Click to Import" Font-Size="Large" />
-            <asp:Button ID="ImportButton" runat="server" Text="Import" OnClick="ImportButton_Click" />
-            <div id="DataImportReview" runat="server" visible="false" style="background-color: #000099; background-attachment: inherit; font-style: normal; font-weight: 500; font-size: large; font-family: 'Baskerville Old Face'; font-variant: normal; text-transform: none; color: #FFFFFF; border: thin ridge #00FFFF">
-                <asp:Label ID="DataImportLabel" runat="server" BackColor="#3333FF" BorderColor="#66FFFF" BorderStyle="Solid" BorderWidth="2px" Font-Names="Baskerville Old Face" Font-Size="XX-Large" Font-Underline="True" ForeColor="Black" Text="Data Import Review"></asp:Label>
+            <asp:Button ID="importButton" runat="server" style="position: inherit;" Text="Import" Width="132px" BackColor="#3399FF" BorderColor="#003366" BorderStyle="Ridge" BorderWidth="2px" OnClick="ImportButton_Click" Height="35px" />
+            <div>
+            <asp:TextBox ID="docOutput" runat="server" Height="600px" Width="500px" TextMode="MultiLine"></asp:TextBox>
+        </div>
+            <div id="DataImportReview" runat="server" visible="false" style="background-color: #336699; background-attachment: inherit; font-style: normal; font-weight: 500; font-size: large; font-family: 'Baskerville Old Face'; font-variant: normal; text-transform: none; color: #FFFFFF; border: thin ridge #00FFFF">
+                <asp:Label ID="DataImportLabel" runat="server" BackColor="#336699" BorderColor="#003366" BorderStyle="Solid" BorderWidth="2px" Font-Names="Baskerville Old Face" Font-Size="XX-Large" Font-Underline="True" ForeColor="white" Text="Data Import Review"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="Button1" runat="server" BackColor="#FF33CC" BorderColor="Aqua" BorderStyle="Inset" BorderWidth="2px" ForeColor="Yellow" OnClick="CancelImport" style="margin-top: 0px; margin-bottom: 1px" Text="Cancel Import" />
+                <asp:Button ID="cancelImportButton" runat="server" style="position: inherit;" Text="Cancel Import" Width="132px" BackColor="#3399FF" BorderColor="#003366" BorderStyle="Ridge" BorderWidth="2px" OnClick="CancelImport" Height="35px" />
                 <br />
                 <br />
 &nbsp;Please verify the imported data below.<br />

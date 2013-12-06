@@ -7,20 +7,20 @@
     <title>CSET ABET Syllabus Front-End</title>
 </head>
 <body>
-    <form id="form1" runat="server" style="width: 1080px; height: 1080px">
-        <table style="width:1080px; height: 1080px;">
-            <tr style="position: relative; height: 85px; width: 1080px; border-color:#003366; border-style:ridge; background-color: #336699">
-                <td ID="imageContainer" style="position: relative; height: 85px">
+    <form id="form1" runat="server" style="width: 100%; height: 1080px">
+        <table runat="server" style="width:100%; height: 1080px;">
+            <tr runat="server" style="position: inherit; height: 8%; width: inherit; border-color:#003366; border-style:ridge; background-color: #336699">
+                <td runat="server" ID="imageContainer" style="position: inherit;">
                     <div>
-                        <asp:Image ID="_webTitleImage" style="position: inherit;" runat="server" ImageUrl="~/CSETText.png" BackColor="#336699" BorderColor="#003366" BorderStyle="Ridge" />
+                        <asp:Image runat="server" ID="_webTitleImage" style="position: inherit;" ImageUrl="~/CSETText.png" BackColor="#336699" BorderColor="#003366" BorderStyle="Ridge" />
                     </div>
-                        <div id="navigationContainer" style="position:relative; width: 580px; height: 85px; top: -80px; left: 481px; border-style: ridge; border-color: #003366">
-                            <div id="Div1" style="position: inherit; height: 42px">
+                        <div id="navigationContainer" runat="server" style="position:relative; width: 580px; height: 85px; top: -80px; left: 481px; border-style: ridge; border-color: #003366">
+                            <div id="Div1" runat="server"  style="position: inherit; height: 42px">
                             <asp:ContentPlaceHolder ID="subTitlePlaceHolder" runat="server">
 
                             </asp:ContentPlaceHolder>
                         </div>
-                        <div id="Div2" style="position: inherit; height: 42px">
+                        <div id="Div2" runat="server"  style="position: inherit; height: 42px">
                             <asp:SiteMapPath ID="breadcrumbSource" runat="server">
 
                             </asp:SiteMapPath>
@@ -28,9 +28,9 @@
                     </div>
                 </td>
             </tr>
-            <tr style="width:1080px; height: 700px;">
-                <td ID="centerLeftContainer" style="background-color: #336699; width: 800px; height: 700px">
-                    <div ID="menuContainer" style="position: relative; width: 300px; height: 400px; left: 2px; top: 4px;">
+            <tr style="width:1200px; height: 700px;" runat="server" >
+                <td ID="centerLeftContainer" style="background-color: #336699; width: 800px; height: 700px" runat="server" >
+                    <div ID="menuContainer" style="position: relative; width: 300px; height: 400px; left: 2px; top: 4px;" runat="server" >
 
                         <asp:Menu ID="Menu1" runat="server" StaticSubMenuIndent="10px" style="position: relative" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98">
                             <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
@@ -50,9 +50,9 @@
                             <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
                             <StaticSelectedStyle BackColor="#507CD1" />
                         </asp:Menu>
-
+                        <asp:Button ID="logoutButton" runat="server" style="position: inherit;" Text="Logout" Width="132px" BackColor="#3399FF" BorderColor="#003366" BorderStyle="Ridge" BorderWidth="2px" OnClick="logoutButton_Click" Height="35px" />
                     </div>
-                    <div id="placeHolderContainer" style="position: relative; top: -400px; left: 303px; width: 580px; height: 800px">
+                    <div id="placeHolderContainer" style="position: relative; top: -400px; left: 303px; width: 80%; height: 800px">
                         <asp:ContentPlaceHolder ID="mainPlaceHolder" runat="server">
         
                         </asp:ContentPlaceHolder>

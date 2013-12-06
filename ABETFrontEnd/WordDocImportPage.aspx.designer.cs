@@ -49,13 +49,22 @@ namespace ABETFrontEnd {
         protected global::System.Web.UI.WebControls.Label ImportLabel;
         
         /// <summary>
-        /// ImportButton control.
+        /// importButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ImportButton;
+        protected global::System.Web.UI.WebControls.Button importButton;
+        
+        /// <summary>
+        /// docOutput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox docOutput;
         
         /// <summary>
         /// DataImportReview control.
@@ -76,13 +85,13 @@ namespace ABETFrontEnd {
         protected global::System.Web.UI.WebControls.Label DataImportLabel;
         
         /// <summary>
-        /// Button1 control.
+        /// cancelImportButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button cancelImportButton;
         
         /// <summary>
         /// CourseTitleInput control.
