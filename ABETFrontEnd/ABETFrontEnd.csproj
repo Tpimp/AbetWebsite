@@ -62,6 +62,7 @@
   <ItemGroup>
     <Content Include="CSETText.png" />
     <Content Include="DatabaseGridviewPage.aspx" />
+    <Content Include="down.png" />
     <Content Include="EditContentPage.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="MockSyllabusPage.aspx" />
@@ -69,6 +70,7 @@
     <Content Include="SearchClassSyllabusPage.aspx" />
     <Content Include="thumbsup.png" />
     <Content Include="Unlock-icon.png" />
+    <Content Include="up.png" />
     <Content Include="VaporHome.aspx" />
     <Content Include="Web.config" />
     <Content Include="SingleItemInsertPage.aspx" />

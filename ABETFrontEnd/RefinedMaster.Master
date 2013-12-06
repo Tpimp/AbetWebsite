@@ -52,7 +52,7 @@
                         </asp:Menu>
                         <asp:Button ID="logoutButton" runat="server" style="position: inherit;" Text="Logout" Width="132px" BackColor="#3399FF" BorderColor="#003366" BorderStyle="Ridge" BorderWidth="2px" OnClick="logoutButton_Click" Height="35px" />
                     </div>
-                    <div id="placeHolderContainer" style="position: relative; top: -400px; left: 303px; width: 80%; height: 800px">
+                    <div id="placeHolderContainer" style="position: relative; top: -400px; left: 303px; width: auto; height: auto">
                         <asp:ContentPlaceHolder ID="mainPlaceHolder" runat="server">
         
                         </asp:ContentPlaceHolder>
