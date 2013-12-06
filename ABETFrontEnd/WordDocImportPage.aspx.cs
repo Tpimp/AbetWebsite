@@ -145,5 +145,22 @@ namespace ABETFrontEnd
                 CourseLabHoursInput.ForeColor = System.Drawing.Color.Black;
             }
         }
+        protected void VerifyCourseCredits(object sender, EventArgs e)
+        {
+            if (AcceptCourseCredits.ImageUrl == "~/thumbsup.png")
+            {
+                AcceptCourseCredits.ImageUrl = "~/Unlock-icon.png";
+                CourseCreditsInput.ReadOnly = true;
+                CourseCreditsInput.BackColor = System.Drawing.Color.Blue;
+                CourseCreditsInput.ForeColor = System.Drawing.Color.Yellow;
+            }
+            else
+            {
+                AcceptCourseCredits.ImageUrl = "~/thumbsup.png";
+                CourseCreditsInput.ReadOnly = false;
+                CourseCreditsInput.BackColor = System.Drawing.Color.White;
+                CourseCreditsInput.ForeColor = System.Drawing.Color.Black;
+            }
+        }
 	}
 }

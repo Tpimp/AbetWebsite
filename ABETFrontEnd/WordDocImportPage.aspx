@@ -40,8 +40,8 @@
                 <asp:TextBox ID="CourseLabHoursInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="332px" TextMode="Number"></asp:TextBox>
                 <asp:ImageButton ID="AcceptCourseLabHours" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCourseLabHours" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
-&nbsp;Course Credits:<asp:TextBox ID="TextBox5" runat="server" OnTextChanged="TextBox2_TextChanged" Width="366px" TextMode="Number"></asp:TextBox>
-                <asp:ImageButton ID="AcceptCourseCredits0" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCourseLabHours" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+&nbsp;Course Credits:<asp:TextBox ID="CourseCreditsInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="366px" TextMode="Number"></asp:TextBox>
+                <asp:ImageButton ID="AcceptCourseCredits" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCourseCredits" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
                 <br />
             </div>

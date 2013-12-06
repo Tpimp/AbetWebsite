@@ -166,21 +166,21 @@ namespace ABETFrontEnd {
         protected global::System.Web.UI.WebControls.ImageButton AcceptCourseLabHours;
         
         /// <summary>
-        /// TextBox5 control.
+        /// CourseCreditsInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox CourseCreditsInput;
         
         /// <summary>
-        /// AcceptCourseCredits0 control.
+        /// AcceptCourseCredits control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton AcceptCourseCredits0;
+        protected global::System.Web.UI.WebControls.ImageButton AcceptCourseCredits;
     }
 }
