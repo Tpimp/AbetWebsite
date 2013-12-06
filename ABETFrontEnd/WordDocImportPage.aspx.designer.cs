@@ -112,6 +112,24 @@ namespace ABETFrontEnd {
         protected global::System.Web.UI.WebControls.ImageButton AcceptCourseTitle;
         
         /// <summary>
+        /// DeptAbbrInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DeptAbbrInput;
+        
+        /// <summary>
+        /// AcceptDeptAbbr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton AcceptDeptAbbr;
+        
+        /// <summary>
         /// CourseNumberInput control.
         /// </summary>
         /// <remarks>
@@ -166,13 +184,13 @@ namespace ABETFrontEnd {
         protected global::System.Web.UI.WebControls.ImageButton AcceptCourseLabHours;
         
         /// <summary>
-        /// CourseCreditsInput control.
+        /// CourseCreditHoursInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CourseCreditsInput;
+        protected global::System.Web.UI.WebControls.TextBox CourseCreditHoursInput;
         
         /// <summary>
         /// AcceptCourseCredits control.

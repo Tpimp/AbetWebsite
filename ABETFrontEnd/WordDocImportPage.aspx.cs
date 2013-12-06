@@ -46,16 +46,21 @@ namespace ABETFrontEnd
 								ref missing, ref missing, ref missing, ref missing, ref missing, ref isVisible);
 				docOutput.MaxLength = wordDocFile.Content.Text.Length;
 
-				//string fullDocText = wordDocFile.Content.Text;
-				Range fullDocText = wordDocFile.Content.FormattedText;
+				string fullDocText = wordDocFile.Content.Text;
 
-				//wordDocFile.Paragraphs[0].;
+				docOutput.Text = fullDocText;
 
-				//fullDocText.
+				SyllabusParser parser = new SyllabusParser(fullDocText);
 
-				docOutput.Text = fullDocText.Text;
+				docOutput.Text = " ";
+				docOutput.Text = parser.getCurrentText();
 
-
+				CourseTitleInput.Text = parser.SyllabusCourseName;
+				DeptAbbrInput.Text = parser.SyllabusDepartmentAbbreviation;
+				CourseNumberInput.Text = parser.SyllabusCourseNumber;
+				CourseLectureHoursInput.Text = parser.LectureHours.ToString();
+				CourseLabHoursInput.Text = parser.LabHours.ToString();
+				CourseCreditHoursInput.Text = parser.CreditHours.ToString();
 			}
 			catch (Exception ex)
 			{
@@ -150,17 +155,35 @@ namespace ABETFrontEnd
             if (AcceptCourseCredits.ImageUrl == "~/thumbsup.png")
             {
                 AcceptCourseCredits.ImageUrl = "~/Unlock-icon.png";
-                CourseCreditsInput.ReadOnly = true;
-                CourseCreditsInput.BackColor = System.Drawing.Color.Blue;
-                CourseCreditsInput.ForeColor = System.Drawing.Color.Yellow;
+				CourseCreditHoursInput.ReadOnly = true;
+				CourseCreditHoursInput.BackColor = System.Drawing.Color.Blue;
+				CourseCreditHoursInput.ForeColor = System.Drawing.Color.Yellow;
             }
             else
             {
                 AcceptCourseCredits.ImageUrl = "~/thumbsup.png";
-                CourseCreditsInput.ReadOnly = false;
-                CourseCreditsInput.BackColor = System.Drawing.Color.White;
-                CourseCreditsInput.ForeColor = System.Drawing.Color.Black;
+                CourseCreditHoursInput.ReadOnly = false;
+				CourseCreditHoursInput.BackColor = System.Drawing.Color.White;
+				CourseCreditHoursInput.ForeColor = System.Drawing.Color.Black;
             }
         }
+
+		protected void VerifyDepartmentAbbreviation(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptCourseLabHours.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptCourseLabHours.ImageUrl = "~/Unlock-icon.png";
+				DeptAbbrInput.ReadOnly = true;
+				DeptAbbrInput.BackColor = System.Drawing.Color.Blue;
+				DeptAbbrInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptCourseLabHours.ImageUrl = "~/thumbsup.png";
+				DeptAbbrInput.ReadOnly = false;
+				DeptAbbrInput.BackColor = System.Drawing.Color.White;
+				DeptAbbrInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
 	}
 }
