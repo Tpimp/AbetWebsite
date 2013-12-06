@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="RefinedMaster.Master.cs" Inherits="ABETFrontEnd.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>CSET ABET Syllabus Front-End</title>
+</head>
+<body>
+    <form id="form1" runat="server" style="width: 1080px; height: 1080px">
+        <table style="width:1080px; height: 1080px;">
+            <tr style="position: relative; height: 85px; width: 1080px; border-color:#003366; border-style:ridge; background-color: #336699">
+                <td ID="imageContainer" style="position: relative; height: 85px">
+                    <div>
+                        <asp:Image ID="_webTitleImage" style="position: inherit;" runat="server" ImageUrl="~/CSETText.png" BackColor="#336699" BorderColor="#003366" BorderStyle="Ridge" />
+                    </div>
+                        <div id="navigationContainer" style="position:relative; width: 580px; height: 85px; top: -80px; left: 481px; border-style: ridge; border-color: #003366">
+                            <div id="Div1" style="position: inherit; height: 42px">
+                            <asp:ContentPlaceHolder ID="subTitlePlaceHolder" runat="server">
+
+                            </asp:ContentPlaceHolder>
+                        </div>
+                        <div id="Div2" style="position: inherit; height: 42px">
+                            <asp:SiteMapPath ID="breadcrumbSource" runat="server">
+
+                            </asp:SiteMapPath>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr style="width:1080px; height: 700px;">
+                <td ID="centerLeftContainer" style="background-color: #336699; width: 800px; height: 700px">
+                    <div ID="menuContainer" style="position: relative; width: 300px; height: 400px; left: 2px; top: 4px;">
+
+                        <asp:Menu ID="Menu1" runat="server" StaticSubMenuIndent="10px" style="position: relative" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98">
+                            <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <DynamicMenuStyle BackColor="#B5C7DE" />
+                            <DynamicSelectedStyle BackColor="#507CD1" />
+                            <Items>
+                                <asp:MenuItem NavigateUrl="~/VaporHome.aspx" Text="Home" ToolTip="Database HomePage" Value="Home"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/WordDocImportPage.aspx" Text="Syllabus Document Import" ToolTip="Reads a .doc/.docx file and parses for database submission" Value="Syllabus Document Import"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/DatabaseGridviewPage.aspx" Text="Database Table View" ToolTip="A page for viewing specific tables" Value="Database Table View"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/EditContentPage.aspx" Text="Edit Syllabus Content" ToolTip="Select and edit a syllabus" Value="Edit Syllabus Content"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/MockSyllabusPage.aspx" Text="View Syllabus" ToolTip="Presents a syllabus produced by a database query" Value="View Syllabus"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/SearchClassSyllabusPage.aspx" Text="Search Class Syllabus" ToolTip="Runs searches and display currently selected syllabus" Value="Search Class Syllabus"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/SingleItemInsertPage.aspx" Text="Insert Single Items" ToolTip="A page to insert specific fields " Value="Insert Single Items"></asp:MenuItem>
+                            </Items>
+                            <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+                            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <StaticSelectedStyle BackColor="#507CD1" />
+                        </asp:Menu>
+
+                    </div>
+                    <div id="placeHolderContainer" style="position: relative; top: -400px; left: 303px; width: 580px; height: 800px">
+                        <asp:ContentPlaceHolder ID="mainPlaceHolder" runat="server">
+        
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

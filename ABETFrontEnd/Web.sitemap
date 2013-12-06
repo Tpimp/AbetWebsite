@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="~/VaporHome.aspx" title="Home"  description="Home">
+        <siteMapNode url="~/WordDocImportPage.aspx" title="Import Syllabus"  description="Page to import syllabus in word doc format" />
+        <siteMapNode url="~/SingleItemInsertPage.aspx" title="Single Insert"  description="Insert Single Database Items" />
+        <siteMapNode url="~/SearchClassSyllabusPage.aspx" title="Search Class Syllabus"  description="Search Syllabai" />
+        <siteMapNode url="~/MockSyllabusPage.aspx" title="View Class Syllabus"  description="Presents a view of selected class syllabus" />
+        <siteMapNode url="~/EditContentPage.aspx" title="Edit Syllabus Content"  description="Select a syllabus and edit fields" />
+        <siteMapNode url="~/DatabaseGridviewPage.aspx" title="View Database Tables"  description="Table view of database information" />
+    </siteMapNode>
+</siteMap>
