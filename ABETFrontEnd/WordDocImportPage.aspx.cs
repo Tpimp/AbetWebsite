@@ -25,6 +25,7 @@ namespace ABETFrontEnd
 			}
 			catch (Exception ex)
 			{
+
 			}
 		}
 
@@ -39,6 +40,7 @@ namespace ABETFrontEnd
 			object readOnly = false;
 			object isVisible = true;
 			object missing = System.Reflection.Missing.Value;
+			
 
 			try
 			{
@@ -55,20 +57,27 @@ namespace ABETFrontEnd
 				docOutput.Text = " ";
 				docOutput.Text = parser.getCurrentText();
 
+				fullDepartmentInput.Text = parser.SyllabusDepartment;
 				CourseTitleInput.Text = parser.SyllabusCourseName;
 				DeptAbbrInput.Text = parser.SyllabusDepartmentAbbreviation;
 				CourseNumberInput.Text = parser.SyllabusCourseNumber;
 				CourseLectureHoursInput.Text = parser.LectureHours.ToString();
 				CourseLabHoursInput.Text = parser.LabHours.ToString();
 				CourseCreditHoursInput.Text = parser.CreditHours.ToString();
+				InstructorFirstInput.Text = parser.CourseInstructorFName;
+				InstructorLastInput.Text = parser.CourseInstructorLName;
+				CourseCoordinatorFirstInput.Text = parser.CourseCoordinatorFName;
+				CourseCoordinatorLastInput.Text = parser.CourseCoordinatorLName;
 			}
 			catch (Exception ex)
 			{
+				wordDocFile.Close(ref missing, ref missing, ref missing);
 				Console.WriteLine("ERROR: " + ex.Message);
 			}
 			finally
 			{
 				wordDocFile.Close(ref missing, ref missing, ref missing);
+				wordDocInstance.DDETerminateAll();
 			}
 		}
 
@@ -170,19 +179,127 @@ namespace ABETFrontEnd
 
 		protected void VerifyDepartmentAbbreviation(object sender, ImageClickEventArgs e)
 		{
-			if (AcceptCourseLabHours.ImageUrl == "~/thumbsup.png")
+			if (AcceptDeptAbbr.ImageUrl == "~/thumbsup.png")
 			{
-				AcceptCourseLabHours.ImageUrl = "~/Unlock-icon.png";
+				AcceptDeptAbbr.ImageUrl = "~/Unlock-icon.png";
 				DeptAbbrInput.ReadOnly = true;
 				DeptAbbrInput.BackColor = System.Drawing.Color.Blue;
 				DeptAbbrInput.ForeColor = System.Drawing.Color.Yellow;
 			}
 			else
 			{
-				AcceptCourseLabHours.ImageUrl = "~/thumbsup.png";
+				AcceptDeptAbbr.ImageUrl = "~/thumbsup.png";
 				DeptAbbrInput.ReadOnly = false;
 				DeptAbbrInput.BackColor = System.Drawing.Color.White;
 				DeptAbbrInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyCourseCredits(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptCourseCredits.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptCourseCredits.ImageUrl = "~/Unlock-icon.png";
+				CourseCreditHoursInput.ReadOnly = true;
+				CourseCreditHoursInput.BackColor = System.Drawing.Color.Blue;
+				CourseCreditHoursInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptCourseCredits.ImageUrl = "~/thumbsup.png";
+				CourseCreditHoursInput.ReadOnly = false;
+				CourseCreditHoursInput.BackColor = System.Drawing.Color.White;
+				CourseCreditHoursInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyDepartmentName(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptDepartmentName.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptDepartmentName.ImageUrl = "~/Unlock-icon.png";
+				fullDepartmentInput.ReadOnly = true;
+				fullDepartmentInput.BackColor = System.Drawing.Color.Blue;
+				fullDepartmentInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptDepartmentName.ImageUrl = "~/thumbsup.png";
+				fullDepartmentInput.ReadOnly = false;
+				fullDepartmentInput.BackColor = System.Drawing.Color.White;
+				fullDepartmentInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyInstructorFirst(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptInstructorFirst.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptInstructorFirst.ImageUrl = "~/Unlock-icon.png";
+				InstructorFirstInput.ReadOnly = true;
+				InstructorFirstInput.BackColor = System.Drawing.Color.Blue;
+				InstructorFirstInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptInstructorFirst.ImageUrl = "~/thumbsup.png";
+				InstructorFirstInput.ReadOnly = false;
+				InstructorFirstInput.BackColor = System.Drawing.Color.White;
+				InstructorFirstInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyCoordinatorFirst(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptInstructorFirst.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptInstructorFirst.ImageUrl = "~/Unlock-icon.png";
+				InstructorFirstInput.ReadOnly = true;
+				InstructorFirstInput.BackColor = System.Drawing.Color.Blue;
+				InstructorFirstInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptInstructorFirst.ImageUrl = "~/thumbsup.png";
+				InstructorFirstInput.ReadOnly = false;
+				InstructorFirstInput.BackColor = System.Drawing.Color.White;
+				InstructorFirstInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyInstructorLast(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptCoordinatorLast.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptCoordinatorLast.ImageUrl = "~/Unlock-icon.png";
+				CourseCoordinatorLastInput.ReadOnly = true;
+				CourseCoordinatorLastInput.BackColor = System.Drawing.Color.Blue;
+				CourseCoordinatorLastInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptCoordinatorLast.ImageUrl = "~/thumbsup.png";
+				CourseCoordinatorLastInput.ReadOnly = false;
+				CourseCoordinatorLastInput.BackColor = System.Drawing.Color.White;
+				CourseCoordinatorLastInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyCoordinatorLast(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptCoordinatorLast.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptCoordinatorLast.ImageUrl = "~/Unlock-icon.png";
+				CourseCoordinatorLastInput.ReadOnly = true;
+				CourseCoordinatorLastInput.BackColor = System.Drawing.Color.Blue;
+				CourseCoordinatorLastInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptCoordinatorLast.ImageUrl = "~/thumbsup.png";
+				CourseCoordinatorLastInput.ReadOnly = false;
+				CourseCoordinatorLastInput.BackColor = System.Drawing.Color.White;
+				CourseCoordinatorLastInput.ForeColor = System.Drawing.Color.Black;
 			}
 		}
 	}

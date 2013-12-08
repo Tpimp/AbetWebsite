@@ -24,9 +24,9 @@
 &nbsp;Please verify the imported data below.<br />
 &nbsp;You may make changes to any items before submitting to the database.<br />
                 <br />
-&nbsp;Course Title:
-                <asp:TextBox ID="CourseTitleInput" runat="server" Width="377px"></asp:TextBox>
-                <asp:ImageButton ID="AcceptCourseTitle" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCourseTitle" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px"  />
+&nbsp;Department Name:
+                <asp:TextBox ID="fullDepartmentInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="330px"></asp:TextBox>
+                <asp:ImageButton ID="AcceptDepartmentName" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyDepartmentName" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
 &nbsp;Department Abbreviation:
                 <asp:TextBox ID="DeptAbbrInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="284px"></asp:TextBox>
@@ -36,6 +36,10 @@
                 <asp:TextBox ID="CourseNumberInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="350px" TextMode="Number"></asp:TextBox>
                 <asp:ImageButton ID="AcceptCourseNumber" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCourseNumber" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
+&nbsp;Course Title:
+                <asp:TextBox ID="CourseTitleInput" runat="server" Width="377px"></asp:TextBox>
+                <asp:ImageButton ID="AcceptCourseTitle" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCourseTitle" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px"  />
+                <br />
 &nbsp;Course Lecture Hours:
                 <asp:TextBox ID="CourseLectureHoursInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="306px" TextMode="Number"></asp:TextBox>
                 <asp:ImageButton ID="AcceptCourseLectureHours" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCourseLectureHours" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
@@ -44,8 +48,25 @@
                 <asp:TextBox ID="CourseLabHoursInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="332px" TextMode="Number"></asp:TextBox>
                 <asp:ImageButton ID="AcceptCourseLabHours" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCourseLabHours" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
-&nbsp;Course Credits:<asp:TextBox ID="CourseCreditHoursInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="366px" TextMode="Number"></asp:TextBox>
+&nbsp;Course Credits:
+                <asp:TextBox ID="CourseCreditHoursInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="360px" TextMode="Number"></asp:TextBox>
                 <asp:ImageButton ID="AcceptCourseCredits" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCourseCredits" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Instructor First Name:
+                <asp:TextBox ID="InstructorFirstInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="312px" TextMode="SingleLine"></asp:TextBox>
+                <asp:ImageButton ID="AcceptInstructorFirst" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyInstructorFirst" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Instructor Last Name:
+                <asp:TextBox ID="InstructorLastInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="313px" TextMode="SingleLine"></asp:TextBox>
+                <asp:ImageButton ID="AcceptInstructorLast" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyInstructorLast" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Course Coordinator First Name:
+                <asp:TextBox ID="CourseCoordinatorFirstInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="239px" TextMode="SingleLine"></asp:TextBox>
+                <asp:ImageButton ID="AcceptCoordinatorFirst" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCoordinatorFirst" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Course Coordinator Last Name:
+                <asp:TextBox ID="CourseCoordinatorLastInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="240px" TextMode="SingleLine"></asp:TextBox>
+                <asp:ImageButton ID="AcceptCoordinatorLast" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCoordinatorLast" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
                 <br />
             </div>

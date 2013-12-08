@@ -94,22 +94,22 @@ namespace ABETFrontEnd {
         protected global::System.Web.UI.WebControls.Button cancelImportButton;
         
         /// <summary>
-        /// CourseTitleInput control.
+        /// fullDepartmentInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CourseTitleInput;
+        protected global::System.Web.UI.WebControls.TextBox fullDepartmentInput;
         
         /// <summary>
-        /// AcceptCourseTitle control.
+        /// AcceptDepartmentName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton AcceptCourseTitle;
+        protected global::System.Web.UI.WebControls.ImageButton AcceptDepartmentName;
         
         /// <summary>
         /// DeptAbbrInput control.
@@ -146,6 +146,24 @@ namespace ABETFrontEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton AcceptCourseNumber;
+        
+        /// <summary>
+        /// CourseTitleInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CourseTitleInput;
+        
+        /// <summary>
+        /// AcceptCourseTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton AcceptCourseTitle;
         
         /// <summary>
         /// CourseLectureHoursInput control.
@@ -200,5 +218,77 @@ namespace ABETFrontEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton AcceptCourseCredits;
+        
+        /// <summary>
+        /// InstructorFirstInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox InstructorFirstInput;
+        
+        /// <summary>
+        /// AcceptInstructorFirst control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton AcceptInstructorFirst;
+        
+        /// <summary>
+        /// InstructorLastInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox InstructorLastInput;
+        
+        /// <summary>
+        /// AcceptInstructorLast control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton AcceptInstructorLast;
+        
+        /// <summary>
+        /// CourseCoordinatorFirstInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CourseCoordinatorFirstInput;
+        
+        /// <summary>
+        /// AcceptCoordinatorFirst control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton AcceptCoordinatorFirst;
+        
+        /// <summary>
+        /// CourseCoordinatorLastInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CourseCoordinatorLastInput;
+        
+        /// <summary>
+        /// AcceptCoordinatorLast control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton AcceptCoordinatorLast;
     }
 }
