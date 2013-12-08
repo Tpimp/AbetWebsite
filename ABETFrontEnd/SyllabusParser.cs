@@ -96,10 +96,103 @@ namespace ABETFrontEnd
 			set { courseCoordinatorLName = value; }
 		}
 
-		private List<Textbook> textbookList;
+		//private List<Textbook> textbookList;
+		private List<string> authorLName;
+		public List<string> getAuthorLNameList()
+		{ return authorLName; }
+
+		private List<string> authorFName;
+		public List<string> getAuthorFNameList()
+		{ return authorFName; }
+
+		private string textbookTitle;
+		public string TextbookTitle
+		{
+			get { return textbookTitle; }
+			set { textbookTitle = value; }
+		}
+
+		private string publisher;
+		public string Publisher
+		{
+			get { return publisher; }
+			set { publisher = value; }
+		}
+
+		//will need parsed by inputBox into Date form of what information exists
+		private string publishDate;
+		public string PublishDate
+		{
+			get { return publishDate; }
+			set { publishDate = value; }
+		}
+
+		private string isbnNumber;
+		public string ISBNNumber
+		{
+			get { return isbnNumber; }
+			set { isbnNumber = value; }
+		}
+
 		private string descriptionText;
-		private List<Requisite> requisiteList;
-		private CourseDegree degreeApplication;
+
+		//private List<Requisite> requisiteList;
+		private string reqType;
+		public string ReqType
+		{
+			get { return reqType; }
+			set { reqType = value; }
+		}
+
+		public void setReqType(bool coReq)
+		{
+			if (coReq == true)
+			{
+				reqType = "Corequisite";
+			}
+			else if (coReq == false)
+			{
+				reqType = "Prerequisite";
+			}
+		}
+
+		private string courseNumber;
+		public string CourseNumber
+		{
+			get { return courseNumber; }
+			set { courseNumber = value; }
+		}
+
+		private string courseName;
+		public string CourseName
+		{
+			get { return courseName; }
+			set { courseName = value; }
+		}
+
+		private string courseComment;
+		public string CourseComment
+		{
+			get { return courseComment; }
+			set { courseComment = value; }
+		}
+
+
+		//private CourseDegree degreeApplication;
+		private string requiredDegree;
+		public string RequiredDegree
+		{
+			get { return requiredDegree; }
+			set { requiredDegree = value; }
+		}
+
+		private string electiveDegree;
+		public string ElectiveDegree
+		{
+			get { return electiveDegree; }
+			set { electiveDegree = value; }
+		}
+		
 		private List<string> courseGoals;
 		private List<int> bsSLOList;
 		private List<int> aeSLOList;
@@ -111,11 +204,23 @@ namespace ABETFrontEnd
 			syllabusText = syllabusPlainText;
 			syllabusTextLength = syllabusPlainText.Length;
 
+			authorFName = new List<string>();
+			authorLName = new List<string>();
+			courseGoals = new List<string>();
+			bsSLOList = new List<int>();
+			aeSLOList = new List<int>();
+			courseTopics = new List<string>();
+
 
 			stripToInstructor();
 			parseInstructor();
+			parseTextbook();
 		}
-
+		/*******************************************************
+		*	returns all fields found in header of syllabus
+		*	(not in order) Department Name, Department Abbreviation,
+		*	course name, course number, and lab, lecture and credit hours
+		********************************************************/
 		public void stripToInstructor()
 		{
 			int headerCharCount = 0;
@@ -236,35 +341,25 @@ namespace ABETFrontEnd
 			//syllabusText has been stripped an can be re-indexed at 0
 			//reset the syllabusText to current text remaining
 			//to allow chopping of strippedText
-			syllabusText = strippedText;
+			syllabusText = getCurrentText();
 
 			//count of text to remove from string being parsed
 			int instructorCharCount = 0;
 
-			//parse delimiter counter
-			int colonCount = 0;
-
 			//critical loop flags
 			bool instructorFound = false;
-			bool implicitInstructor = false;
 			bool coordinatorFound = false;
-			bool counting = false;
 			bool firstNameFlag = true;
-
-			//lengths
-			int instructorNameLength = 0;
-			int coordinatorNameLength = 0;
 
 			//character indexers
 			int i = 0;
 			int j = 0;
-			int instructorNameStart = 0;
-			int instructorNameEnd = 0;
 
 			//always the same across every syllabus
 			int instructorTagLength = 11;
 			int coordinatorTagLength = 19;
 					
+			//jump the first tag
 			i = instructorTagLength;
 
 			while (syllabusText[i] != '\r')
@@ -343,7 +438,8 @@ namespace ABETFrontEnd
 						}
 					}
 				}
-				i++;
+				if (!instructorFound || !coordinatorFound)
+					i++;
 			}
 			//index [i] now == '\r' (word newline)
 			//set instructorCharCount to [i] + 1 and strip instructor line
@@ -354,6 +450,97 @@ namespace ABETFrontEnd
 
 		public void parseTextbook()
 		{
+			//reset syllabusText index to 0
+			syllabusText = getCurrentText();
+
+			//tagLength same across all syllabai
+			int textbookTagLength = 9;
+
+			bool done = false;
+
+			//holds author names, etc, before moving to actual holder
+			string buffer = "";
+			
+			//for scoping reasons, index defined external to the loop
+			int index = 0;
+
+			//jump index to author names
+			index = textbookTagLength + 2;
+
+			while (syllabusText[index] != ',')
+			{
+				if (syllabusText[index] != ',')
+					buffer += syllabusText[index];
+				index++;
+			}
+			authorLName.Add(buffer);
+			buffer = "";
+			index += 2;
+			while (syllabusText[index] != ' ')
+			{
+				if (syllabusText[index] != ' ')
+					buffer += syllabusText[index];
+				index++;
+			}
+			authorFName.Add(buffer);
+			buffer = "";
+			index += 5;
+			while (syllabusText[index] != ' ')
+			{
+				if (syllabusText[index] != ' ')
+					buffer += syllabusText[index];
+				index++;
+			}
+			authorFName.Add(buffer);
+			buffer = "";
+			index += 1;
+			while (syllabusText[index] != '.')
+			{
+				if (syllabusText[index] != '.')
+					buffer += syllabusText[index];
+				index++;
+			}
+			authorLName.Add(buffer);
+			buffer = "";
+			index += 2;
+			while (syllabusText[index] != '.')
+			{
+				if (syllabusText[index] != '.')
+					buffer += syllabusText[index];
+				index++;
+			}
+			textbookTitle = buffer;
+			buffer = "";
+			index += 2;
+			while (syllabusText[index] != ',')
+			{
+				if (syllabusText[index] != ',')
+					buffer += syllabusText[index];
+				index++;
+			}
+			publisher = buffer;
+			buffer = "";
+			index += 2;
+			while (syllabusText[index] != '.')
+			{
+				if (syllabusText[index] != '.')
+					buffer += syllabusText[index];
+				index++;
+			}
+			publishDate = buffer;
+			buffer = "";
+			index += 8;
+			while (syllabusText[index] != '\r')
+			{
+				if (syllabusText[index] != '\r')
+					buffer += syllabusText[index];
+				index++;
+			}
+			isbnNumber = buffer;
+			buffer = "";
+			index++;
+
+			strippedText = syllabusText.Remove(0, index);
 		}
 
 		public void parseRequisites()

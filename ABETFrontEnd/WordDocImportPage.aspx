@@ -65,8 +65,32 @@
                 <asp:ImageButton ID="AcceptCoordinatorFirst" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCoordinatorFirst" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
 &nbsp;Course Coordinator Last Name:
-                <asp:TextBox ID="CourseCoordinatorLastInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="240px" TextMode="SingleLine"></asp:TextBox>
+                <asp:TextBox ID="CourseCoordinatorLastInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="239px" TextMode="SingleLine"></asp:TextBox>
                 <asp:ImageButton ID="AcceptCoordinatorLast" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCoordinatorLast" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Author Last Name:
+                <asp:TextBox ID="AuthorLastInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="332px" TextMode="MultiLine" Height="40px"></asp:TextBox>
+                <asp:ImageButton ID="AcceptAuthorLast" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyAuthorLast" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Author Last Name:
+                <asp:TextBox ID="AuthorFirstInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="331px" TextMode="MultiLine" Height="40px"></asp:TextBox>
+                <asp:ImageButton ID="AcceptAuthorFirst" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyAuthorFirst" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Textbook Title:
+                <asp:TextBox ID="TextbookTitleInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="355px" TextMode="SingleLine"></asp:TextBox>
+                <asp:ImageButton ID="AcceptTextbookTitle" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyTextbookTitle" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Publisher:
+                <asp:TextBox ID="PublisherInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="396px" TextMode="SingleLine"></asp:TextBox>
+                <asp:ImageButton ID="AcceptPublisher" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyPublisher" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Publish Date:
+                <asp:TextBox ID="PublishDateInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="370px" TextMode="SingleLine"></asp:TextBox>
+                <asp:ImageButton ID="AcceptPublishDate" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyPublishDate" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Textbook ISBN:
+                <asp:TextBox ID="ISBNInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="346px" TextMode="SingleLine"></asp:TextBox>
+                <asp:ImageButton ID="AcceptISBN" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyTextbookISBN" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
                 <br />
             </div>

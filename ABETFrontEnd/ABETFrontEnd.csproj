@@ -77,7 +77,6 @@
     <Content Include="WordDocImportPage.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CourseDegree.cs" />
     <Compile Include="DatabaseGridviewPage.aspx.cs">
       <DependentUpon>DatabaseGridviewPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -114,7 +113,6 @@
     <Compile Include="RefinedMaster.Master.designer.cs">
       <DependentUpon>RefinedMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="Requisite.cs" />
     <Compile Include="SearchClassSyllabusPage.aspx.cs">
       <DependentUpon>SearchClassSyllabusPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -123,7 +121,6 @@
       <DependentUpon>SearchClassSyllabusPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="SyllabusParser.cs" />
-    <Compile Include="Textbook.cs" />
     <Compile Include="VaporHome.aspx.cs">
       <DependentUpon>VaporHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

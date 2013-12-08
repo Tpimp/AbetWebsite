@@ -68,6 +68,24 @@ namespace ABETFrontEnd
 				InstructorLastInput.Text = parser.CourseInstructorLName;
 				CourseCoordinatorFirstInput.Text = parser.CourseCoordinatorFName;
 				CourseCoordinatorLastInput.Text = parser.CourseCoordinatorLName;
+
+				List<string> temp = new List<string>(parser.getAuthorLNameList());
+
+				foreach (string last in temp)
+				{
+					AuthorLastInput.Text += last + '\r';
+				}
+
+				temp = parser.getAuthorFNameList();
+				foreach (string first in temp)
+				{
+					AuthorFirstInput.Text += first + '\r';
+				}
+				TextbookTitleInput.Text = parser.TextbookTitle;
+				PublisherInput.Text = parser.Publisher;
+				PublishDateInput.Text = parser.PublishDate;
+				ISBNInput.Text = parser.ISBNNumber;
+
 			}
 			catch (Exception ex)
 			{
@@ -251,37 +269,37 @@ namespace ABETFrontEnd
 
 		protected void VerifyCoordinatorFirst(object sender, ImageClickEventArgs e)
 		{
-			if (AcceptInstructorFirst.ImageUrl == "~/thumbsup.png")
+			if (AcceptCoordinatorFirst.ImageUrl == "~/thumbsup.png")
 			{
-				AcceptInstructorFirst.ImageUrl = "~/Unlock-icon.png";
-				InstructorFirstInput.ReadOnly = true;
-				InstructorFirstInput.BackColor = System.Drawing.Color.Blue;
-				InstructorFirstInput.ForeColor = System.Drawing.Color.Yellow;
+				AcceptCoordinatorFirst.ImageUrl = "~/Unlock-icon.png";
+				CourseCoordinatorFirstInput.ReadOnly = true;
+				CourseCoordinatorFirstInput.BackColor = System.Drawing.Color.Blue;
+				CourseCoordinatorFirstInput.ForeColor = System.Drawing.Color.Yellow;
 			}
 			else
 			{
-				AcceptInstructorFirst.ImageUrl = "~/thumbsup.png";
-				InstructorFirstInput.ReadOnly = false;
-				InstructorFirstInput.BackColor = System.Drawing.Color.White;
-				InstructorFirstInput.ForeColor = System.Drawing.Color.Black;
+				AcceptCoordinatorFirst.ImageUrl = "~/thumbsup.png";
+				CourseCoordinatorFirstInput.ReadOnly = false;
+				CourseCoordinatorFirstInput.BackColor = System.Drawing.Color.White;
+				CourseCoordinatorFirstInput.ForeColor = System.Drawing.Color.Black;
 			}
 		}
 
 		protected void VerifyInstructorLast(object sender, ImageClickEventArgs e)
 		{
-			if (AcceptCoordinatorLast.ImageUrl == "~/thumbsup.png")
+			if (AcceptInstructorLast.ImageUrl == "~/thumbsup.png")
 			{
-				AcceptCoordinatorLast.ImageUrl = "~/Unlock-icon.png";
-				CourseCoordinatorLastInput.ReadOnly = true;
-				CourseCoordinatorLastInput.BackColor = System.Drawing.Color.Blue;
-				CourseCoordinatorLastInput.ForeColor = System.Drawing.Color.Yellow;
+				AcceptInstructorLast.ImageUrl = "~/Unlock-icon.png";
+				InstructorLastInput.ReadOnly = true;
+				InstructorLastInput.BackColor = System.Drawing.Color.Blue;
+				InstructorLastInput.ForeColor = System.Drawing.Color.Yellow;
 			}
 			else
 			{
-				AcceptCoordinatorLast.ImageUrl = "~/thumbsup.png";
-				CourseCoordinatorLastInput.ReadOnly = false;
-				CourseCoordinatorLastInput.BackColor = System.Drawing.Color.White;
-				CourseCoordinatorLastInput.ForeColor = System.Drawing.Color.Black;
+				AcceptInstructorLast.ImageUrl = "~/thumbsup.png";
+				InstructorLastInput.ReadOnly = false;
+				InstructorLastInput.BackColor = System.Drawing.Color.White;
+				InstructorLastInput.ForeColor = System.Drawing.Color.Black;
 			}
 		}
 
@@ -300,6 +318,114 @@ namespace ABETFrontEnd
 				CourseCoordinatorLastInput.ReadOnly = false;
 				CourseCoordinatorLastInput.BackColor = System.Drawing.Color.White;
 				CourseCoordinatorLastInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyTextbookISBN(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptISBN.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptISBN.ImageUrl = "~/Unlock-icon.png";
+				ISBNInput.ReadOnly = true;
+				ISBNInput.BackColor = System.Drawing.Color.Blue;
+				ISBNInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptISBN.ImageUrl = "~/thumbsup.png";
+				ISBNInput.ReadOnly = false;
+				ISBNInput.BackColor = System.Drawing.Color.White;
+				ISBNInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyPublishDate(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptPublishDate.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptPublishDate.ImageUrl = "~/Unlock-icon.png";
+				PublishDateInput.ReadOnly = true;
+				PublishDateInput.BackColor = System.Drawing.Color.Blue;
+				PublishDateInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptPublishDate.ImageUrl = "~/thumbsup.png";
+				PublishDateInput.ReadOnly = false;
+				PublishDateInput.BackColor = System.Drawing.Color.White;
+				PublishDateInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyPublisher(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptPublisher.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptPublisher.ImageUrl = "~/Unlock-icon.png";
+				PublisherInput.ReadOnly = true;
+				PublisherInput.BackColor = System.Drawing.Color.Blue;
+				PublisherInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptPublisher.ImageUrl = "~/thumbsup.png";
+				PublisherInput.ReadOnly = false;
+				PublisherInput.BackColor = System.Drawing.Color.White;
+				PublisherInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyTextbookTitle(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptTextbookTitle.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptTextbookTitle.ImageUrl = "~/Unlock-icon.png";
+				TextbookTitleInput.ReadOnly = true;
+				TextbookTitleInput.BackColor = System.Drawing.Color.Blue;
+				TextbookTitleInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptTextbookTitle.ImageUrl = "~/thumbsup.png";
+				TextbookTitleInput.ReadOnly = false;
+				TextbookTitleInput.BackColor = System.Drawing.Color.White;
+				TextbookTitleInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyAuthorFirst(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptAuthorFirst.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptAuthorFirst.ImageUrl = "~/Unlock-icon.png";
+				AuthorFirstInput.ReadOnly = true;
+				AuthorFirstInput.BackColor = System.Drawing.Color.Blue;
+				AuthorFirstInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptAuthorFirst.ImageUrl = "~/thumbsup.png";
+				AuthorFirstInput.ReadOnly = false;
+				AuthorFirstInput.BackColor = System.Drawing.Color.White;
+				AuthorFirstInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyAuthorLast(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptAuthorLast.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptAuthorLast.ImageUrl = "~/Unlock-icon.png";
+				AuthorLastInput.ReadOnly = true;
+				AuthorLastInput.BackColor = System.Drawing.Color.Blue;
+				AuthorLastInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptAuthorLast.ImageUrl = "~/thumbsup.png";
+				AuthorLastInput.ReadOnly = false;
+				AuthorLastInput.BackColor = System.Drawing.Color.White;
+				AuthorLastInput.ForeColor = System.Drawing.Color.Black;
 			}
 		}
 	}
