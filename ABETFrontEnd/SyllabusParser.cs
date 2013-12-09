@@ -215,6 +215,7 @@ namespace ABETFrontEnd
 			stripToInstructor();
 			parseInstructor();
 			parseTextbook();
+			parseDescription();
 		}
 		/*******************************************************
 		*	returns all fields found in header of syllabus
@@ -362,10 +363,27 @@ namespace ABETFrontEnd
 			//jump the first tag
 			i = instructorTagLength;
 
-			while (syllabusText[i] != '\r')
+			int loopCount = 0;
+
+			while (syllabusText[i] != '\r' && syllabusText[i] != '\v')
 			{
 				if (!instructorFound)
 				{
+					if (syllabusText[i] == ' ' || syllabusText[i] == '\t')
+					{
+						if (syllabusText[i+1] == ' ' || syllabusText[i+1] == '\t')
+						{
+							if (syllabusText[i+2] == ' ' || syllabusText[i+2] == '\t')
+							{
+								if (syllabusText[i+3] == ' ' || syllabusText[i+3] == '\t')
+								{
+									instructorFound = true;
+									courseInstructorFName = "";
+									courseInstructorLName = "";
+								}
+							}
+						}
+					}
 					//loop over the gap between instructorTag and name
 					if (syllabusText[i] != ' ' && syllabusText[i] != '\t')
 					{//looping until name found
@@ -379,7 +397,7 @@ namespace ABETFrontEnd
 									//jump the space
 									i++;
 								}
-								else
+								else if (!firstNameFlag)
 								{//we found the space following last name
 									instructorFound = true;
 								}
@@ -456,7 +474,6 @@ namespace ABETFrontEnd
 			//tagLength same across all syllabai
 			int textbookTagLength = 9;
 
-			bool done = false;
 
 			//holds author names, etc, before moving to actual holder
 			string buffer = "";
@@ -478,31 +495,39 @@ namespace ABETFrontEnd
 			index += 2;
 			while (syllabusText[index] != ' ')
 			{
-				if (syllabusText[index] != ' ')
+				if (syllabusText[index] != ' ' && syllabusText[index] != '.')
 					buffer += syllabusText[index];
 				index++;
 			}
 			authorFName.Add(buffer);
 			buffer = "";
 			index += 5;
-			while (syllabusText[index] != ' ')
+			string doubleAuthorChecker = syllabusText.Substring(index - 4, (index - 1) - (index - 4));
+			if (doubleAuthorChecker == "and")
 			{
-				if (syllabusText[index] != ' ')
-					buffer += syllabusText[index];
-				index++;
+				while (syllabusText[index] != ' ')
+				{
+					if (syllabusText[index] != ' ')
+						buffer += syllabusText[index];
+					index++;
+				}
+				authorFName.Add(buffer);
+				buffer = "";
+				index += 1;
+				while (syllabusText[index] != '.')
+				{
+					if (syllabusText[index] != '.')
+						buffer += syllabusText[index];
+					index++;
+				}
+				authorLName.Add(buffer);
+				buffer = "";
+				index += 2;
 			}
-			authorFName.Add(buffer);
-			buffer = "";
-			index += 1;
-			while (syllabusText[index] != '.')
-			{
-				if (syllabusText[index] != '.')
-					buffer += syllabusText[index];
+			else//reverse the index increase during check for multi-author
+				index -= 5;
+			if (syllabusText[index] == ' ')
 				index++;
-			}
-			authorLName.Add(buffer);
-			buffer = "";
-			index += 2;
 			while (syllabusText[index] != '.')
 			{
 				if (syllabusText[index] != '.')
@@ -512,15 +537,19 @@ namespace ABETFrontEnd
 			textbookTitle = buffer;
 			buffer = "";
 			index += 2;
-			while (syllabusText[index] != ',')
+			if (syllabusText[index] == ' ')
+				index++;
+			while (syllabusText[index] != ',' && syllabusText[index] != '.')
 			{
-				if (syllabusText[index] != ',')
+				if (syllabusText[index] != ',' && syllabusText[index] != '.')
 					buffer += syllabusText[index];
 				index++;
 			}
 			publisher = buffer;
 			buffer = "";
 			index += 2;
+			if (syllabusText[index] == ' ') 
+				index++;
 			while (syllabusText[index] != '.')
 			{
 				if (syllabusText[index] != '.')
@@ -528,19 +557,34 @@ namespace ABETFrontEnd
 				index++;
 			}
 			publishDate = buffer;
+			if (publishDate[0] == '3')
+				publishDate = "";
 			buffer = "";
 			index += 8;
-			while (syllabusText[index] != '\r')
+			string checkForISBN = syllabusText.Substring(index - 6, (index - 2) - (index - 6));
+			if (checkForISBN == "ISBN")
 			{
-				if (syllabusText[index] != '\r')
-					buffer += syllabusText[index];
+				while (syllabusText[index] != '\r')
+				{
+					if (syllabusText[index] != '\r')
+						buffer += syllabusText[index];
+					index++;
+				}
+				isbnNumber = buffer;
+				buffer = "";
 				index++;
 			}
-			isbnNumber = buffer;
-			buffer = "";
-			index++;
-
+			else
+			{
+				isbnNumber = "";
+				index -= 5;
+			}
 			strippedText = syllabusText.Remove(0, index);
+		}
+
+		public void parseDescription()
+		{
+
 		}
 
 		public void parseRequisites()
