@@ -21,6 +21,7 @@
             <asp:TextBox ID="passwordInput" runat="server" style="position: inherit; top: 87px; left: 18px; " Height="30px" Width="298px" TextMode="Password"></asp:TextBox>
             <asp:Button ID="loginButton" runat="server" style="position: inherit; top: 160px; left: 499px; padding-left: 12px;" Text="Submit Login" Width="132px" BackColor="#3399FF" BorderColor="#003366" BorderStyle="Ridge" BorderWidth="2px" OnClick="loginButton_Click" Height="35px" />
         </div>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CSET_ABET_DBConnectionString %>" SelectCommand="SELECT * FROM [users]"></asp:SqlDataSource>
     </form>
 </body>
 </html>

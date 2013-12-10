@@ -19,13 +19,14 @@
                 <asp:Label ID="DataImportLabel" runat="server" BackColor="#336699" BorderColor="#003366" BorderStyle="Solid" BorderWidth="2px" Font-Names="Baskerville Old Face" Font-Size="XX-Large" Font-Underline="True" ForeColor="white" Text="Data Import Review"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Button ID="cancelImportButton" runat="server" style="position: inherit;" Text="Cancel Import" Width="132px" BackColor="#3399FF" BorderColor="#003366" BorderStyle="Ridge" BorderWidth="2px" OnClick="CancelImport" Height="35px" />
+                <asp:Button ID="Button1" runat="server" style="position: inherit; top: -43px; left: 481px;" Text="Import" Width="132px" BackColor="#3399FF" BorderColor="#003366" BorderStyle="Ridge" BorderWidth="2px" OnClick="Import" Height="35px" />
                 <br />
                 <br />
 &nbsp;Please verify the imported data below.<br />
 &nbsp;You may make changes to any items before submitting to the database.<br />
                 <br />
 &nbsp;Department Name:
-                <asp:TextBox ID="fullDepartmentInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="330px"></asp:TextBox>
+                <asp:TextBox ID="fullDepartmentInput" runat="server" Width="330px"></asp:TextBox>
                 <asp:ImageButton ID="AcceptDepartmentName" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyDepartmentName" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
 &nbsp;Department Abbreviation:

@@ -7,11 +7,25 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Office.Interop.Word;
 using System.Configuration;
+using System.Data.SqlClient;
 
 namespace ABETFrontEnd
 {
 	public partial class WordDocImportPage : System.Web.UI.Page
 	{
+		SqlConnection conn = new SqlConnection("Data Source=DrSanchez;Initial Catalog=CSET_ABET_DB;Integrated Security=True");
+		SqlCommand cmd;
+		SqlDataReader sqlReader;
+
+		public List<string> lname_list = new List<string>();
+		public List<string> fname_list = new List<string>();
+
+
+		public string authorFname1 = "";
+		public string authorLname1 = "";
+		public string authorFname2 = "";
+		public string authorLname2 = "";
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 		}
@@ -30,7 +44,7 @@ namespace ABETFrontEnd
 			}
 		}
 
-		private void dumpText()
+		protected void dumpText()
 		{
 			DocumentUpload.SaveAs(Server.MapPath(DocumentUpload.FileName));
 			object documentContainer = Server.MapPath(DocumentUpload.FileName);
@@ -42,105 +56,183 @@ namespace ABETFrontEnd
 			object isVisible = true;
 			object missing = System.Reflection.Missing.Value;
 			
+			wordDocFile = wordDocInstance.Documents.Open(ref documentContainer, ref missing, ref readOnly, ref missing,
+							ref missing, ref missing, ref missing, ref missing, ref missing, ref isVisible);
+			docOutput.MaxLength = wordDocFile.Content.Text.Length;
 
-			try
+			string fullDocText = wordDocFile.Content.Text;
+
+			docOutput.Text = fullDocText;
+
+			SyllabusParser parser = new SyllabusParser(fullDocText);
+
+			docOutput.Text = " ";
+			docOutput.Text = parser.getCurrentText();
+
+			fullDepartmentInput.Text = parser.SyllabusDepartment;
+			CourseTitleInput.Text = parser.SyllabusCourseName;
+			DeptAbbrInput.Text = parser.SyllabusDepartmentAbbreviation;
+			CourseNumberInput.Text = parser.SyllabusCourseNumber;
+			CourseLectureHoursInput.Text = parser.LectureHours.ToString();
+			CourseLabHoursInput.Text = parser.LabHours.ToString();
+			CourseCreditHoursInput.Text = parser.CreditHours.ToString();
+			InstructorFirstInput.Text = parser.CourseInstructorFName;
+			InstructorLastInput.Text = parser.CourseInstructorLName;
+			CourseCoordinatorFirstInput.Text = parser.CourseCoordinatorFName;
+			CourseCoordinatorLastInput.Text = parser.CourseCoordinatorLName;
+			DescriptionInput.Text = parser.DescriptionText;
+
+			lname_list = parser.getAuthorLNameList();
+            fname_list = parser.getAuthorFNameList();
+            int count = fname_list.Count();
+
+			if (count == 2)
 			{
-				wordDocFile = wordDocInstance.Documents.Open(ref documentContainer, ref missing, ref readOnly, ref missing,
-								ref missing, ref missing, ref missing, ref missing, ref missing, ref isVisible);
-				docOutput.MaxLength = wordDocFile.Content.Text.Length;
+				authorFname1 = fname_list[0];
+				authorFname2 = fname_list[1];
+				authorLname1 = lname_list[0];
+				authorLname2 = lname_list[1];
+			}
+			else
+			{
+				authorFname1 = fname_list[0];
+				authorLname1 = lname_list[0];
+			}
 
-				string fullDocText = wordDocFile.Content.Text;
 
-				docOutput.Text = fullDocText;
+			for(int cur_index = 0; cur_index < count; cur_index++)
+            {
+                TableCell fname = new TableCell();
+                fname.Text = fname_list[cur_index];
+                TableCell lname = new TableCell();
+                lname.Text = lname_list[cur_index];
+                TableRow insert_row = new TableRow();
+                insert_row.Cells.Add(fname);
+                insert_row.Cells.Add(lname);
+                AuthorTable.Rows.Add(insert_row);
+			}
 
-				SyllabusParser parser = new SyllabusParser(fullDocText);
-
-				docOutput.Text = " ";
-				docOutput.Text = parser.getCurrentText();
-
-				fullDepartmentInput.Text = parser.SyllabusDepartment;
-				CourseTitleInput.Text = parser.SyllabusCourseName;
-				DeptAbbrInput.Text = parser.SyllabusDepartmentAbbreviation;
-				CourseNumberInput.Text = parser.SyllabusCourseNumber;
-				CourseLectureHoursInput.Text = parser.LectureHours.ToString();
-				CourseLabHoursInput.Text = parser.LabHours.ToString();
-				CourseCreditHoursInput.Text = parser.CreditHours.ToString();
-				InstructorFirstInput.Text = parser.CourseInstructorFName;
-				InstructorLastInput.Text = parser.CourseInstructorLName;
-				CourseCoordinatorFirstInput.Text = parser.CourseCoordinatorFName;
-				CourseCoordinatorLastInput.Text = parser.CourseCoordinatorLName;
-				DescriptionInput.Text = parser.DescriptionText;
-
-				List<string> lname_list = new List<string>(parser.getAuthorLNameList());
-                List<string> fname_list = new List<string>(parser.getAuthorFNameList());
-                int count = fname_list.Count();
-				for(int cur_index = 0; cur_index < count; cur_index++)
-                {
-                    TableCell fname = new TableCell();
-                    fname.Text = fname_list[cur_index];
-                    TableCell lname = new TableCell();
-                    lname.Text = lname_list[cur_index];
-                    TableRow insert_row = new TableRow();
-                    insert_row.Cells.Add(fname);
-                    insert_row.Cells.Add(lname);
-                    AuthorTable.Rows.Add(insert_row);
-				}
-
-				TextbookTitleInput.Text = parser.TextbookTitle;
-				PublisherInput.Text = parser.Publisher;
-				PublishDateInput.Text = parser.PublishDate;
-				ISBNInput.Text = parser.ISBNNumber;
-                TableCell type = new TableCell();
-                type.Text = parser.ReqType;
-                TableCell reqcomment = new TableCell();
-                reqcomment.Text = parser.RequisiteCourseComment;
-                TableRow insert_req_row = new TableRow();
-                insert_req_row.Cells.Add(type);
-                insert_req_row.Cells.Add(reqcomment);
-                PreReqsTable.Rows.Add(insert_req_row);
+			TextbookTitleInput.Text = parser.TextbookTitle;
+			PublisherInput.Text = parser.Publisher;
+			PublishDateInput.Text = parser.PublishDate;
+			ISBNInput.Text = parser.ISBNNumber;
+            TableCell type = new TableCell();
+            type.Text = parser.ReqType;
+            TableCell reqcomment = new TableCell();
+            reqcomment.Text = parser.RequisiteCourseComment;
+            TableRow insert_req_row = new TableRow();
+            insert_req_row.Cells.Add(type);
+            insert_req_row.Cells.Add(reqcomment);
+            PreReqsTable.Rows.Add(insert_req_row);
                 
-			}
-			catch (Exception ex)
+			wordDocFile.Close(ref missing, ref missing, ref missing);
+			if (wordDocFile != null)
 			{
-				wordDocFile.Close(ref missing, ref missing, ref missing);
-				if (wordDocFile != null)
-				{
-					System.Runtime.InteropServices.Marshal.ReleaseComObject(wordDocFile);
-				}
-				if (wordDocInstance != null)
-				{
-					wordDocInstance.DDETerminateAll();
-					System.Runtime.InteropServices.Marshal.ReleaseComObject(wordDocInstance);
-				}
-				Console.WriteLine("ERROR: " + ex.Message);
+				System.Runtime.InteropServices.Marshal.ReleaseComObject(wordDocFile);
+				wordDocFile = null;
 			}
-			finally
+			if (wordDocInstance != null)
 			{
-				wordDocFile.Close(ref missing, ref missing, ref missing);
-				if (wordDocFile != null)
-				{
-					System.Runtime.InteropServices.Marshal.ReleaseComObject(wordDocFile);
-					wordDocFile = null;
-				}
-				if (wordDocInstance != null)
-				{
-					wordDocInstance.DDETerminateAll();
-					System.Runtime.InteropServices.Marshal.ReleaseComObject(wordDocInstance);
-					wordDocInstance = null;
-				}
-				GC.Collect();
+				wordDocInstance.DDETerminateAll();
+				System.Runtime.InteropServices.Marshal.ReleaseComObject(wordDocInstance);
+				wordDocInstance = null;
 			}
+			
 			if (File.Exists(DocumentUpload.FileName))
 			{
 				File.Delete(HttpContext.Current.Server.MapPath(DocumentUpload.FileName));
 			}
 			
+		}	
+
+
+		protected void Import(object sender, EventArgs e)
+		{
+			conn.Open();
+
+			//issues with author insert
+			//if (authorFname2 != "")
+			//{
+			//	cmd = new SqlCommand("INSERT INTO Author VALUES (@authorFName, @authorLName)", conn);
+			//	cmd.Parameters.AddWithValue("@authorFName", authorFname1);
+			//	cmd.Parameters.AddWithValue("@authorLName", authorLname1);
+			//	cmd.ExecuteNonQuery();
+			//	cmd.Parameters.AddWithValue("@authorFName", authorFname2);
+			//	cmd.Parameters.AddWithValue("@authorLName", authorLname2);
+			//	cmd.ExecuteNonQuery();
+			//	cmd.Dispose();
+			//}
+			//else
+			//{
+			//	cmd = new SqlCommand("INSERT INTO Author VALUES (@authorFName, @authorLName)", conn);
+			//	cmd.Parameters.AddWithValue("@authorFName", authorFname1);
+			//	cmd.Parameters.AddWithValue("@authorLName", authorLname1);
+			//	cmd.ExecuteNonQuery();
+			//	cmd.Dispose();
+			//}
+
+			cmd = new SqlCommand("INSERT INTO Publisher VALUES (@publisherName)", conn);
+			cmd.Parameters.AddWithValue("@publisherName", PublisherInput.Text);
+			cmd.ExecuteNonQuery();
+			cmd.Dispose();
+
+			cmd = new SqlCommand("INSERT INTO Textbook (Title, ISBN, PublishDate) VALUES (@title, @isbn, @publishDate)", conn);
+			cmd.Parameters.AddWithValue("@title", TextbookTitleInput.Text);
+			cmd.Parameters.AddWithValue("@isbn", ISBNInput.Text);
+			cmd.Parameters.AddWithValue("@publishDate", PublishDateInput.Text);
+			cmd.ExecuteNonQuery();
+			cmd.Dispose();
+
+			cmd = new SqlCommand("INSERT INTO Course (Title, Number, [Lecture Hours], [Lab Hours], Credits, Description, Goals, Topics) VALUES (@title, @number, @lectureHours, @labHours, @credits, @description, ' ', ' ')", conn);
+			cmd.Parameters.AddWithValue("@title", CourseTitleInput.Text);
+			cmd.Parameters.AddWithValue("@number", CourseNumberInput.Text);
+			cmd.Parameters.AddWithValue("@lectureHours", CourseLectureHoursInput.Text);
+			cmd.Parameters.AddWithValue("@labHours", CourseLabHoursInput.Text);
+			cmd.Parameters.AddWithValue("@credits", CourseCreditHoursInput.Text);
+			cmd.Parameters.AddWithValue("@description", DescriptionInput.Text);
+			cmd.ExecuteNonQuery();
+			cmd.Dispose();
+
+			cmd = new SqlCommand("INSERT INTO Department (DepartmentName, DepartmentAbbr) VALUES (@deptName, @deptAbbr)", conn);
+			cmd.Parameters.AddWithValue("@deptName", fullDepartmentInput.Text);
+			cmd.Parameters.AddWithValue("@deptAbbr", DeptAbbrInput.Text);
+			cmd.ExecuteNonQuery();
+			cmd.Dispose();
+
+			//if (InstructorFirstInput.Text == "")
+			//{
+			//	cmd = new SqlCommand("INSERT INTO Professor (FName, LName) VALUES (@fname, @lname)", conn);
+			//	cmd.Parameters.AddWithValue("@fname", CourseCoordinatorFirstInput.Text);
+			//	cmd.Parameters.AddWithValue("@lname", CourseCoordinatorLastInput.Text);
+			//	cmd.ExecuteNonQuery();
+			//	cmd.Dispose();
+			//}
+			//else
+			//{
+			//	cmd = new SqlCommand("INSERT INTO Professor (FName, LName) VALUES (@fname, @lname)", conn);
+			//	cmd.Parameters.AddWithValue("@fname", InstructorFirstInput.Text);
+			//	cmd.Parameters.AddWithValue("@lname", InstructorLastInput.Text);
+			//	cmd.ExecuteNonQuery();
+			//	cmd.Dispose();
+			//	cmd = new SqlCommand("INSERT INTO Professor (FName, LName) VALUES (@fname, @lname)", conn);
+			//	cmd.Parameters.AddWithValue("@fname", CourseCoordinatorFirstInput.Text);
+			//	cmd.Parameters.AddWithValue("@lname", CourseCoordinatorLastInput.Text);
+			//	cmd.ExecuteNonQuery();
+			//	cmd.Dispose();
+			//}
+
+			cmd = new SqlCommand("INSERT INTO ReqType (RequirementType) VALUES (@reqType)", conn);
+			cmd.Parameters.AddWithValue("@reqType", PreReqsTable.Rows[0].Cells[0].Text);
+			cmd.ExecuteNonQuery();
+			cmd.Dispose();
+
+			cmd = new SqlCommand("INSERT INTO ReqComment (Comment) VALUES (@comment)", conn);
+			cmd.Parameters.AddWithValue("@comment", PreReqsTable.Rows[0].Cells[1].Text);
+			cmd.ExecuteNonQuery();
+			cmd.Dispose();
+
+			conn.Close();
 		}
-
-        protected void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         protected void CancelImport(object sender, EventArgs e)
         {
@@ -448,5 +540,11 @@ namespace ABETFrontEnd
 				DescriptionInput.ForeColor = System.Drawing.Color.Black;
 			}
 		}
+
+		protected void TextBox2_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
 	}
 }

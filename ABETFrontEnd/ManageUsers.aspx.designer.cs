@@ -10,79 +10,52 @@
 namespace ABETFrontEnd {
     
     
-    public partial class LoginPage {
+    public partial class ManageUsers {
         
         /// <summary>
-        /// Head1 control.
+        /// editLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        protected global::System.Web.UI.WebControls.Label editLabel;
         
         /// <summary>
-        /// form1 control.
+        /// UserGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.GridView UserGridView;
         
         /// <summary>
-        /// csetTitle control.
+        /// SqlUserDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image csetTitle;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlUserDataSource;
         
         /// <summary>
-        /// pageTitle control.
+        /// userLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pageTitle;
+        protected global::System.Web.UI.WebControls.Label userLabel;
         
         /// <summary>
-        /// usernameDiv control.
+        /// userTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl usernameDiv;
-        
-        /// <summary>
-        /// usernameLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label usernameLabel;
-        
-        /// <summary>
-        /// usernameInput control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usernameInput;
-        
-        /// <summary>
-        /// passwordDiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl passwordDiv;
+        protected global::System.Web.UI.WebControls.TextBox userTextbox;
         
         /// <summary>
         /// passwordLabel control.
@@ -94,30 +67,48 @@ namespace ABETFrontEnd {
         protected global::System.Web.UI.WebControls.Label passwordLabel;
         
         /// <summary>
-        /// passwordInput control.
+        /// passwordTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordInput;
+        protected global::System.Web.UI.WebControls.TextBox passwordTextbox;
         
         /// <summary>
-        /// loginButton control.
+        /// addUserButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loginButton;
+        protected global::System.Web.UI.WebControls.Button addUserButton;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// userLabel0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.Label userLabel0;
+        
+        /// <summary>
+        /// userTextbox0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox userTextbox0;
+        
+        /// <summary>
+        /// removeUserButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button removeUserButton;
     }
 }

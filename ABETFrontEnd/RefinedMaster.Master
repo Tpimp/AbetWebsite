@@ -46,6 +46,7 @@
                                 <asp:MenuItem NavigateUrl="~/SearchClassSyllabusPage.aspx" Text="Search Class Syllabus" ToolTip="Runs searches and display currently selected syllabus" Value="Search Class Syllabus"></asp:MenuItem>
                                 <asp:MenuItem NavigateUrl="~/SingleItemInsertPage.aspx" Text="Insert Single Items" ToolTip="A page to insert specific fields " Value="Insert Single Items"></asp:MenuItem>
                                 <asp:MenuItem NavigateUrl="~/InsertRequisite.aspx" Text="Insert A Requisite" Value="Insert A Requisite"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/ManageUsers.aspx" Text="Manage Users" Value="Manage Users"></asp:MenuItem>
                             </Items>
                             <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
                             <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />

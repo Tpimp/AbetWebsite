@@ -97,11 +97,11 @@ namespace ABETFrontEnd
 		}
 
 		//private List<Textbook> textbookList;
-		private List<string> authorLName;
+		private List<string> authorLName = new List<string>();
 		public List<string> getAuthorLNameList()
 		{ return authorLName; }
 
-		private List<string> authorFName;
+		private List<string> authorFName = new List<string>();
 		public List<string> getAuthorFNameList()
 		{ return authorFName; }
 
@@ -204,11 +204,11 @@ namespace ABETFrontEnd
 			get { return electiveDegree; }
 			set { electiveDegree = value; }
 		}
-		
-		private List<string> courseGoals;
-		private List<int> bsSLOList;
-		private List<int> aeSLOList;
-		private List<string> courseTopics;
+
+		private List<string> courseGoals = new List<string>();
+		private List<int> bsSLOList = new List<int>();
+		private List<int> aeSLOList = new List<int>();
+		private List<string> courseTopics = new List<string>();
 
 
 		public SyllabusParser(string syllabusPlainText)
@@ -217,12 +217,6 @@ namespace ABETFrontEnd
 			unalteredText = syllabusPlainText;
 			syllabusTextLength = syllabusPlainText.Length;
 
-			authorFName = new List<string>();
-			authorLName = new List<string>();
-			courseGoals = new List<string>();
-			bsSLOList = new List<int>();
-			aeSLOList = new List<int>();
-			courseTopics = new List<string>();
 
 
 			stripToInstructor();
@@ -235,9 +229,8 @@ namespace ABETFrontEnd
 			//need to call the remaining functions
 			//in the order they are defined down the class def
 			//parseRequisites();
-
-
 		}
+
 		/*******************************************************
 		*	returns all fields found in header of syllabus
 		*	(not in order) Department Name, Department Abbreviation,
