@@ -52,7 +52,7 @@ namespace ABETFrontEnd
             }
             else
             {
-                reqcomment = ReqCommentInput.Text;
+                reqcomment = ReqCommentInput.Text.Replace("'","\"");
             }
             if (SelectCourseLink.Checked)
             {
@@ -66,6 +66,7 @@ namespace ABETFrontEnd
                 }
                 coursetitle.Remove(coursenum.Length - 1);
             }
+            
             String insert_statement = ("EXEC sp_IOrFRequisite '" + department + "', '"+ deptabbr + "', '" + coursenum + "', '" +  reqtype + "', '" + reqcomment + "';");
             SqlConnection conn = new SqlConnection(
                 System.Configuration.ConfigurationManager.
