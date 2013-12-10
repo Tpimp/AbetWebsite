@@ -77,11 +77,8 @@
                 </asp:Table>
                 <br />
                 <br />
-&nbsp;<br />
-                <br />
-                <br />
 &nbsp; Textbook Title:
-                <asp:TextBox ID="TextbookTitleInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="355px" TextMode="SingleLine"></asp:TextBox>
+                <asp:TextBox ID="TextbookTitleInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="349px" TextMode="SingleLine"></asp:TextBox>
                 <asp:ImageButton ID="AcceptTextbookTitle" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyTextbookTitle" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
 &nbsp;Publisher:
@@ -95,6 +92,10 @@
 &nbsp;Textbook ISBN:
                 <asp:TextBox ID="ISBNInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="346px" TextMode="SingleLine"></asp:TextBox>
                 <asp:ImageButton ID="AcceptISBN" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyTextbookISBN" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+                <br />
+&nbsp;Course Description:
+                <asp:TextBox ID="DescriptionInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="326px" TextMode="MultiLine" Height="80px"></asp:TextBox>
+                <asp:ImageButton ID="AcceptDescription" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyDescriptionText" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
                 <br />
             </div>

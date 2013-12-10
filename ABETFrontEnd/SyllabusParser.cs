@@ -8,6 +8,7 @@ namespace ABETFrontEnd
 	public class SyllabusParser
 	{
 		//plain text of word doc
+		private string unalteredText;
 		private string syllabusText;
 		//length in chars of word doc
 		private int syllabusTextLength;
@@ -135,6 +136,11 @@ namespace ABETFrontEnd
 		}
 
 		private string descriptionText;
+		public string DescriptionText
+		{
+			get { return descriptionText; }
+			set { descriptionText = value; }
+		}
 
 		//private List<Requisite> requisiteList;
 		private string reqType;
@@ -156,25 +162,32 @@ namespace ABETFrontEnd
 			}
 		}
 
-		private string courseNumber;
-		public string CourseNumber
+		private string requisiteDeptAbbr;
+		public string RequisiteDeptAbbr
 		{
-			get { return courseNumber; }
-			set { courseNumber = value; }
+			get { return requisiteDeptAbbr; }
+			set { requisiteDeptAbbr = value; }
 		}
 
-		private string courseName;
-		public string CourseName
+		private string requisiteCourseNumber;
+		public string RequisiteCourseNumber
 		{
-			get { return courseName; }
-			set { courseName = value; }
+			get { return requisiteCourseNumber; }
+			set { requisiteCourseNumber = value; }
 		}
 
-		private string courseComment;
-		public string CourseComment
+		private string requisiteCourseName;
+		public string RequisiteCourseName
 		{
-			get { return courseComment; }
-			set { courseComment = value; }
+			get { return requisiteCourseName; }
+			set { requisiteCourseName = value; }
+		}
+
+		private string requisiteCourseComment;
+		public string RequisiteCourseComment
+		{
+			get { return requisiteCourseComment; }
+			set { requisiteCourseComment = value; }
 		}
 
 
@@ -202,6 +215,7 @@ namespace ABETFrontEnd
 		public SyllabusParser(string syllabusPlainText)
 		{
 			syllabusText = syllabusPlainText;
+			unalteredText = syllabusPlainText;
 			syllabusTextLength = syllabusPlainText.Length;
 
 			authorFName = new List<string>();
@@ -216,6 +230,13 @@ namespace ABETFrontEnd
 			parseInstructor();
 			parseTextbook();
 			parseDescription();
+			//complete up to here
+
+			//need to call the remaining functions
+			//in the order they are defined down the class def
+			//parseRequisites();
+
+
 		}
 		/*******************************************************
 		*	returns all fields found in header of syllabus
@@ -579,16 +600,156 @@ namespace ABETFrontEnd
 				isbnNumber = "";
 				index -= 5;
 			}
+			if (syllabusText[index] == '\r')
+			{
+				while (syllabusText[index] == '\r')
+				{
+					index++;
+				}
+			}
 			strippedText = syllabusText.Remove(0, index);
 		}
 
 		public void parseDescription()
 		{
+			//reset syllabusText index to 0
+			syllabusText = getCurrentText();
 
+			int index = 0;
+			//loop to start up description text
+			while (syllabusText[index] != '\r' && syllabusText[index] != '\v')
+			{
+				index++;
+			}
+			//loop to end of description text
+			if (syllabusText[index] == '\r')
+			{
+				while (syllabusText[index] == '\r')
+				{
+					index++;
+				}
+			}
+			while (syllabusText[index] != '\r')
+			{
+				descriptionText += syllabusText[index];
+				index++;
+			}
+			if (syllabusText[index] == '\r')
+			{
+				while (syllabusText[index] == '\r')
+				{
+					index++;
+				}
+			}
+
+			strippedText = syllabusText.Remove(0, index);
 		}
+
+		/****************************************************
+		**	on function start, you want to take stock of syllabusText
+		**  and strippedText. to remove the stuff you already parsed and
+		**	reset the index to 0, call getCurrentText on syllabusText
+		**	unmodified version of syllabus text is in unalteredText
+		**	for the current architecture, strippedText = syllabusText.Remove(0, index);
+		**	is key at the end of each function. index can be whatever your counter is
+		**	at the end of the set for parsing. i have been stripping out all remaining
+		**	whitespace to next category as well
+		**	white space symbols:
+		**	'\r'	'\v'	'\t'	'\n'
+		** CR		VT		HT		NL
+		** 
+		*****************************************************/
 
 		public void parseRequisites()
 		{
+			//reset syllabusText index to 0
+			syllabusText = getCurrentText();
+
+			int index = 0;
+
+			bool allFound = false;
+			bool subcategoryFlag = false;
+			string buffer = "";
+			Queue<char> charBuffer = new Queue<char>(3);
+
+			//start of category this is valid at all times
+			int prerequisiteTagLength = 13;
+			index = prerequisiteTagLength;
+
+			if (syllabusText[index] == '\r')
+			{
+				while (syllabusText[index] == '\r')
+				{
+					index++;
+				}
+			}
+
+			//category check
+			charBuffer.Enqueue(syllabusText[index]);
+			index++;
+			charBuffer.Enqueue(syllabusText[index]);
+			index++;
+			charBuffer.Enqueue(syllabusText[index]);
+			index++;
+
+			if (requisiteParseHelper(charBuffer, "Pre"))
+			{//charBuffer currently holds the key
+				subcategoryFlag = true;
+			}
+			else
+			{
+				while (!requisiteParseHelper(charBuffer, "CST"))
+				{
+					//discard oldest char
+					charBuffer.Dequeue();
+					//get latest
+					index++;
+					charBuffer.Enqueue(syllabusText[index]);
+				}
+				//doubl
+				//requisiteDeptAbbr = 
+			}
+
+			while (!allFound)
+			{
+			}
+
+
+
+			//if (syllabusText[index] == '\r')
+			//{
+			//	while (syllabusText[index] == '\r')
+			//	{
+			//		index++;
+			//	}
+			//}
+
+
+
+
+			strippedText = syllabusText.Remove(0, index);
+		}
+
+		private bool requisiteParseHelper(Queue<char> charSetToCheck, string key)
+		{
+			bool matched = false;
+			string buffer = "";//ensure empty buffer string
+			while (charSetToCheck.Count > 0)
+			{
+				buffer += charSetToCheck.Dequeue();
+			}
+			if (buffer == key)
+				matched = true;
+			//else not a match, default false
+
+			//requeue buffer
+			for (int i = 0; i < buffer.Length; i++)
+			{
+				charSetToCheck.Enqueue(buffer[i]);
+			}
+			buffer = "";
+
+			return matched;
 		}
 
 		public void parseRequiredFor()

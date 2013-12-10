@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -68,6 +69,7 @@ namespace ABETFrontEnd
 				InstructorLastInput.Text = parser.CourseInstructorLName;
 				CourseCoordinatorFirstInput.Text = parser.CourseCoordinatorFName;
 				CourseCoordinatorLastInput.Text = parser.CourseCoordinatorLName;
+				DescriptionInput.Text = parser.DescriptionText;
 
 				List<string> lname_list = new List<string>(parser.getAuthorLNameList());
                 List<string> fname_list = new List<string>(parser.getAuthorFNameList());
@@ -93,13 +95,38 @@ namespace ABETFrontEnd
 			catch (Exception ex)
 			{
 				wordDocFile.Close(ref missing, ref missing, ref missing);
+				if (wordDocFile != null)
+				{
+					System.Runtime.InteropServices.Marshal.ReleaseComObject(wordDocFile);
+				}
+				if (wordDocInstance != null)
+				{
+					wordDocInstance.DDETerminateAll();
+					System.Runtime.InteropServices.Marshal.ReleaseComObject(wordDocInstance);
+				}
 				Console.WriteLine("ERROR: " + ex.Message);
 			}
 			finally
 			{
 				wordDocFile.Close(ref missing, ref missing, ref missing);
-				wordDocInstance.DDETerminateAll();
+				if (wordDocFile != null)
+				{
+					System.Runtime.InteropServices.Marshal.ReleaseComObject(wordDocFile);
+					wordDocFile = null;
+				}
+				if (wordDocInstance != null)
+				{
+					wordDocInstance.DDETerminateAll();
+					System.Runtime.InteropServices.Marshal.ReleaseComObject(wordDocInstance);
+					wordDocInstance = null;
+				}
+				GC.Collect();
 			}
+			if (File.Exists(DocumentUpload.FileName))
+			{
+				File.Delete(HttpContext.Current.Server.MapPath(DocumentUpload.FileName));
+			}
+			
 		}
 
         protected void TextBox2_TextChanged(object sender, EventArgs e)
@@ -393,6 +420,24 @@ namespace ABETFrontEnd
 				TextbookTitleInput.ReadOnly = false;
 				TextbookTitleInput.BackColor = System.Drawing.Color.White;
 				TextbookTitleInput.ForeColor = System.Drawing.Color.Black;
+			}
+		}
+
+		protected void VerifyDescriptionText(object sender, ImageClickEventArgs e)
+		{
+			if (AcceptDescription.ImageUrl == "~/thumbsup.png")
+			{
+				AcceptDescription.ImageUrl = "~/Unlock-icon.png";
+				DescriptionInput.ReadOnly = true;
+				DescriptionInput.BackColor = System.Drawing.Color.Blue;
+				DescriptionInput.ForeColor = System.Drawing.Color.Yellow;
+			}
+			else
+			{
+				AcceptDescription.ImageUrl = "~/thumbsup.png";
+				DescriptionInput.ReadOnly = false;
+				DescriptionInput.BackColor = System.Drawing.Color.White;
+				DescriptionInput.ForeColor = System.Drawing.Color.Black;
 			}
 		}
 	}
