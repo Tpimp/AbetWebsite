@@ -292,40 +292,13 @@ namespace ABETFrontEnd {
         protected global::System.Web.UI.WebControls.ImageButton AcceptCoordinatorLast;
         
         /// <summary>
-        /// AuthorLastInput control.
+        /// AuthorTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AuthorLastInput;
-        
-        /// <summary>
-        /// AcceptAuthorLast control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton AcceptAuthorLast;
-        
-        /// <summary>
-        /// AuthorFirstInput control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AuthorFirstInput;
-        
-        /// <summary>
-        /// AcceptAuthorFirst control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton AcceptAuthorFirst;
+        protected global::System.Web.UI.WebControls.Table AuthorTable;
         
         /// <summary>
         /// TextbookTitleInput control.

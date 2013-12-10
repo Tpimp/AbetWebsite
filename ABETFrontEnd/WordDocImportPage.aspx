@@ -68,15 +68,19 @@
                 <asp:TextBox ID="CourseCoordinatorLastInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="239px" TextMode="SingleLine"></asp:TextBox>
                 <asp:ImageButton ID="AcceptCoordinatorLast" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyCoordinatorLast" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
-&nbsp;Author Last Name:
-                <asp:TextBox ID="AuthorLastInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="332px" TextMode="MultiLine" Height="40px"></asp:TextBox>
-                <asp:ImageButton ID="AcceptAuthorLast" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyAuthorLast" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Authors Found:<br />
+                <asp:Table ID="AuthorTable" runat="server" BorderColor="White" BorderStyle="Solid" BorderWidth="2px" CellPadding="4" CellSpacing="4" Font-Names="Consolas" ForeColor="White" GridLines="Both" HorizontalAlign="Left" style="margin-top: 0px" Width="520px">
+                    <asp:TableRow runat="server">
+                        <asp:TableCell runat="server" ForeColor="Yellow">[FIRST NAME]</asp:TableCell>
+                        <asp:TableCell runat="server" ForeColor="Yellow">[LAST NAME]</asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>
                 <br />
-&nbsp;Author Last Name:
-                <asp:TextBox ID="AuthorFirstInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="331px" TextMode="MultiLine" Height="40px"></asp:TextBox>
-                <asp:ImageButton ID="AcceptAuthorFirst" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyAuthorFirst" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
-&nbsp;Textbook Title:
+&nbsp;<br />
+                <br />
+                <br />
+&nbsp; Textbook Title:
                 <asp:TextBox ID="TextbookTitleInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="355px" TextMode="SingleLine"></asp:TextBox>
                 <asp:ImageButton ID="AcceptTextbookTitle" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyTextbookTitle" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
