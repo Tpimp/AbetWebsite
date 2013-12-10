@@ -97,6 +97,16 @@
                 <asp:TextBox ID="DescriptionInput" runat="server" OnTextChanged="TextBox2_TextChanged" Width="326px" TextMode="MultiLine" Height="80px"></asp:TextBox>
                 <asp:ImageButton ID="AcceptDescription" runat="server" BackColor="Black" BorderColor="Yellow" onClick="VerifyDescriptionText" BorderStyle="Outset" BorderWidth="2px" Height="25px" ImageAlign="Top" ImageUrl="~/thumbsup.png" ValidateRequestMode="Disabled" Width="25px" />
                 <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pre-Requisites Found:<br />
+                <asp:Table ID="PreReqsTable" runat="server" BorderColor="White" BorderStyle="Solid" BorderWidth="2px" CellPadding="4" CellSpacing="4" Font-Names="Consolas" ForeColor="White" GridLines="Both" HorizontalAlign="Left" style="margin-top: 0px" Width="520px">
+                    <asp:TableRow runat="server">
+                        <asp:TableCell runat="server" ForeColor="Yellow">[Requisite]</asp:TableCell>
+                        <asp:TableCell runat="server" ForeColor="Yellow">[Comment]</asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>
+                <br />
+                <br />
+                <br />
                 <br />
             </div>
         </div>

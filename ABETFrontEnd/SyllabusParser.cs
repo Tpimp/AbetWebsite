@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
 namespace ABETFrontEnd
 {
 	public class SyllabusParser
@@ -669,11 +668,30 @@ namespace ABETFrontEnd
 			int index = 0;
 
             string tag_buffer = "";
+            List<string> prereqs = new List<string>();
 
             while (syllabusText[index] != ':') { tag_buffer += syllabusText[index++]; }
-            if (tag_buffer.Contains("Prequisite"))
+            if (tag_buffer.Contains("Prerequisite"))
             {
                 tag_buffer = "";
+                while (!Char.IsLetter(syllabusText[index++]))
+                {}
+            }
+            string line_buffer = "";
+            while (syllabusText[index] != '\n' && syllabusText[index] != '\r')
+            { line_buffer += syllabusText[index++];}
+            string[] halves = line_buffer.Split(':');
+            prereqs.Add(halves[1]);
+            line_buffer = "";
+            while (syllabusText[index] != '\n' && syllabusText[index] != '\r')
+            { line_buffer += syllabusText[index++]; }
+
+            if (prereqs.Count() > 0)
+            {
+                string[] req_split = prereqs[0].Split(',');
+                reqType = req_split[0].Substring(1);
+                if (req_split.Length > 1)
+                    requisiteCourseComment = req_split[1];
             }
 
 			strippedText = syllabusText.Remove(0, index);

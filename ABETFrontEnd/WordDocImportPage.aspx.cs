@@ -90,6 +90,14 @@ namespace ABETFrontEnd
 				PublisherInput.Text = parser.Publisher;
 				PublishDateInput.Text = parser.PublishDate;
 				ISBNInput.Text = parser.ISBNNumber;
+                TableCell type = new TableCell();
+                type.Text = parser.ReqType;
+                TableCell reqcomment = new TableCell();
+                reqcomment.Text = parser.RequisiteCourseComment;
+                TableRow insert_req_row = new TableRow();
+                insert_req_row.Cells.Add(type);
+                insert_req_row.Cells.Add(reqcomment);
+                PreReqsTable.Rows.Add(insert_req_row);
                 
 			}
 			catch (Exception ex)
