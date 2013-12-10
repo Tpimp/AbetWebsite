@@ -7,5 +7,6 @@
         <siteMapNode url="~/MockSyllabusPage.aspx" title="View Class Syllabus"  description="Presents a view of selected class syllabus" />
         <siteMapNode url="~/EditContentPage.aspx" title="Edit Syllabus Content"  description="Select a syllabus and edit fields" />
         <siteMapNode url="~/DatabaseGridviewPage.aspx" title="View Database Tables"  description="Table view of database information" />
+        <siteMapNode url="~/InsertRequisite.aspx" title="Insert A Requisite"  description="Page to Insert a Requisite" />
     </siteMapNode>
 </siteMap>

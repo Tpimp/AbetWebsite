@@ -230,6 +230,7 @@ namespace ABETFrontEnd
 			parseInstructor();
 			parseTextbook();
 			parseDescription();
+            parseRequisites();
 			//complete up to here
 
 			//need to call the remaining functions
@@ -667,65 +668,13 @@ namespace ABETFrontEnd
 
 			int index = 0;
 
-			bool allFound = false;
-			bool subcategoryFlag = false;
-			string buffer = "";
-			Queue<char> charBuffer = new Queue<char>(3);
+            string tag_buffer = "";
 
-			//start of category this is valid at all times
-			int prerequisiteTagLength = 13;
-			index = prerequisiteTagLength;
-
-			if (syllabusText[index] == '\r')
-			{
-				while (syllabusText[index] == '\r')
-				{
-					index++;
-				}
-			}
-
-			//category check
-			charBuffer.Enqueue(syllabusText[index]);
-			index++;
-			charBuffer.Enqueue(syllabusText[index]);
-			index++;
-			charBuffer.Enqueue(syllabusText[index]);
-			index++;
-
-			if (requisiteParseHelper(charBuffer, "Pre"))
-			{//charBuffer currently holds the key
-				subcategoryFlag = true;
-			}
-			else
-			{
-				while (!requisiteParseHelper(charBuffer, "CST"))
-				{
-					//discard oldest char
-					charBuffer.Dequeue();
-					//get latest
-					index++;
-					charBuffer.Enqueue(syllabusText[index]);
-				}
-				//doubl
-				//requisiteDeptAbbr = 
-			}
-
-			while (!allFound)
-			{
-			}
-
-
-
-			//if (syllabusText[index] == '\r')
-			//{
-			//	while (syllabusText[index] == '\r')
-			//	{
-			//		index++;
-			//	}
-			//}
-
-
-
+            while (syllabusText[index] != ':') { tag_buffer += syllabusText[index++]; }
+            if (tag_buffer.Contains("Prequisite"))
+            {
+                tag_buffer = "";
+            }
 
 			strippedText = syllabusText.Remove(0, index);
 		}
