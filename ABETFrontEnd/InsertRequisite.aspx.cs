@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 namespace ABETFrontEnd
 {
     public partial class InsertRequisite : System.Web.UI.Page
@@ -71,8 +72,12 @@ namespace ABETFrontEnd
                 ConnectionStrings["CSET_ABET_DBConnectionString"].ConnectionString);
             conn.Open();
             SqlCommand command = new SqlCommand(insert_statement, conn);
-            command.ExecuteNonQuery();
+            int @reqID = command.ExecuteNonQuery();
             conn.Close();
+            ReqType.DataBind();
+            ReqCommentBox.DataBind();
+            ReqTypeTextBox.Text = "";
+            ReqCommentInput.Text = "";
         }
         
     }
